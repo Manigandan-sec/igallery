@@ -1,0 +1,55 @@
+<head>
+    <title>Interactive Image Gallery</title>
+    <link href="img.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Image Gallery</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <img id="galleryImage" src="aot.jpeg"alt="Gallery Image">
+            <p class="caption" id="caption">Attack On Titan</p>
+
+            <div class="buttons">
+                <button onclick="prevImage()">Previous</button>
+                <button onclick="nextImage()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        MANIGANDAN.S(25004934)
+    </footer>
+
+    <script>
+        let gallery = [
+            { src: "aot.jpeg", text: "Attack On Titan" },
+            { src: "bleach.jpeg", text: "Bleach" },
+            { src: "demonslayer.jpeg", text: "Demon Slayer" },
+            { src: "solo.jpeg", text: "Solo Levelling" },
+            { src: "wano.jpg", text: "One Piece" }
+        ];
+        let index = 0;
+        function nextImage() {
+            index++;
+            if (index >= gallery.length) {
+                index = 0;
+            }
+            updateImage();
+        }
+        function prevImage() {
+            index--;
+            if (index < 0) {
+                index = gallery.length - 1;
+            }
+            updateImage();
+        }
+        function updateImage() {
+            document.getElementById("galleryImage").src = gallery[index].src;
+            document.getElementById("caption").innerText = gallery[index].text;
+        }
+    </script>
+</body>
+</html>
